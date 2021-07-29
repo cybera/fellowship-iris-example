@@ -1,9 +1,8 @@
-fellowship-template
+iris-analysis
 ==============================
 
-A starting place for data science projects. This readme should be updated by the fellows 
-so that it is a starting point for the partners who will be receiving this 
-repository and associated work.
+Sample or example repository demonstrating some good workflows when 
+working with Git and Jupyter notebooks.
 
 Project Organization
 ------------
