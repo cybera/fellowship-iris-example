@@ -1,0 +1,5 @@
+diff zach-Iris_notebook.ipynb zach-Iris_notebook_bigFonts.ipynb
+
+pip install nbdiff
+nbdiff zach-Iris_notebook.ipynb zach-Iris_notebook_bigFonts.ipynb
+nbdiff-web zach-Iris_notebook.ipynb zach-Iris_notebook_bigFonts.ipynb
