@@ -1,3 +1,9 @@
+'''
+Module for collecting graph related functions.
+'''
+
+import matplotlib.pyplot as plt
+
 def scatterMatrix(dataFrame, labelColumn):
     ''''
     Makes a so-called matrix scatter using data from dataFrame. 
