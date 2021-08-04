@@ -46,5 +46,9 @@ def scatterMatrix(dataFrame, labelColumn):
         for label in range(L):
             x = dataFrame.query(f'{labelColumn} == {label}').iloc[:,i].values.T
             axs[i,i].hist(x,bins='auto', alpha=0.5, color=colors[label])
-        
+    
+    for axV, axH, label in zip(axs[:,0], axs[-1,:], dataFrame.columns):
+        axV.set(ylabel=label)
+        axH.set(xlabel=label)
+
     return fig, axs
