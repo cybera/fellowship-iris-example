@@ -4,6 +4,8 @@ iris-analysis
 Sample or example repository demonstrating some good workflows when 
 working with Git and Jupyter notebooks.
 
+Accompanying presentation available: [Slides](https://docs.google.com/presentation/d/1WZp_V-jQM4dZru19xitD3kiP7K9UaTrdDZ9vQtWSftI/edit?usp=sharing)
+
 Project Organization
 ------------
 Folder structure or organziation for this project:
