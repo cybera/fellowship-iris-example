@@ -20,7 +20,7 @@ def scatterMatrix(dataFrame, labelColumn):
     
     Supports only first 5 numeric columns.
     '''
-    N = list(dataFrame.columns).index(labelColumn) - 1
+    N = list(dataFrame.columns).index(labelColumn)
     fig, axs = plt.subplots(N,N)
 
     colors = ['C0','C1','C2','C4','C5']
@@ -46,5 +46,9 @@ def scatterMatrix(dataFrame, labelColumn):
         for label in range(L):
             x = dataFrame.query(f'{labelColumn} == {label}').iloc[:,i].values.T
             axs[i,i].hist(x,bins='auto', alpha=0.5, color=colors[label])
-        
+    
+    for axV, axH, label in zip(axs[:,0], axs[-1,:], dataFrame.columns):
+        axV.set(ylabel=label)
+        axH.set(xlabel=label)
+
     return fig, axs
