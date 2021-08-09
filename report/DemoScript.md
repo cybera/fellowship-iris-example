@@ -66,9 +66,117 @@ and how that can be useful for going back or referencing
 any work you've done. 
 
 Also, we'll be version controlling this document as well so 
-if you want you could find out any fun things that have 
+if you want you could find out any fun or strange things that have 
 changed over the authoring of this as well. 
 
+## Outline
 
+c1b408 Start (Delete GetData.ipynb)
+aee895 Update README.md (on main)
+1bcd36 renamed and moved notebook
+d756ce Removed unnecessary cells, moved imports
+9943da refactored fucntion def
+03ea64 Fixed matplotlib import
+78a46c Moved function def out to script
+d45abc pre PR commit
+\<this is where we branched\> _fellowship-demo exists as a branch here still_
+e0a1ed Removed not PR ready notebooks
+ee6b7a added axis labels (PR comment)
+103c89 Merge pull request #4 from cybera/fellowship-demo-PR
+    
+    
 
+```gitlog
+commit d5b747176137e793058ca17a40702c58407f57f9 (HEAD -> script)
+Author: Zachary Shand <zachary.shand@cybera.ca>
+Date:   Mon Aug 9 16:40:22 2021 -0600
+
+    Wrote intro to Script file
+
+commit 103c89e50ea3331c6602bfc7ebc1412e5ddab415 (origin/main, origin/HEAD, main)
+Merge: aee8952 ee6b7a0
+Author: Zach <81401558+ZachAttacksProblems@users.noreply.github.com>
+Date:   Wed Aug 4 13:45:23 2021 -0600
+
+    Merge pull request #4 from cybera/fellowship-demo-PR
+    
+    Fellowship demo pr
+
+commit ee6b7a08d09a87f2816071cedca2135235adddc9 (origin/fellowship-demo-PR)
+Author: Zachary Shand <zachary.shand@cybera.ca>
+:...skipping...
+commit d5b747176137e793058ca17a40702c58407f57f9 (HEAD -> script)
+Author: Zachary Shand <zachary.shand@cybera.ca>
+Date:   Mon Aug 9 16:40:22 2021 -0600
+
+    Wrote intro to Script file
+
+commit 103c89e50ea3331c6602bfc7ebc1412e5ddab415 (origin/main, origin/HEAD, main)
+Merge: aee8952 ee6b7a0
+Author: Zach <81401558+ZachAttacksProblems@users.noreply.github.com>
+Date:   Wed Aug 4 13:45:23 2021 -0600
+
+    Merge pull request #4 from cybera/fellowship-demo-PR
+    
+    Fellowship demo pr
+
+commit ee6b7a08d09a87f2816071cedca2135235adddc9 (origin/fellowship-demo-PR)
+Author: Zachary Shand <zachary.shand@cybera.ca>
+Date:   Wed Aug 4 13:44:39 2021 -0600
+
+    added axis labels
+
+commit e0a1ede1924dda708bef89475688897517551985
+Author: Zachary Shand <zachary.shand@cybera.ca>
+Date:   Wed Aug 4 13:34:41 2021 -0600
+
+    Removed not PR ready notebooks
+
+commit d45abc16baa1b0ceefac404f37c061ac8845e545 (origin/fellowship-demo, fellowship-demo)
+Author: Zachary Shand <zachary.shand@cybera.ca>
+Date:   Wed Aug 4 13:31:36 2021 -0600
+
+    pre PR commit
+
+commit 78a46c63ef73f902d3e5e4b48f6d36392c691c5b
+Author: Zachary Shand <zachary.shand@cybera.ca>
+Date:   Wed Aug 4 13:28:26 2021 -0600
+
+    Moved function def out to script
+
+commit 03ea6496173a2df22ba707ffac896df1c7cc2ccc
+Author: Zachary Shand <zachary.shand@cybera.ca>
+Date:   Wed Aug 4 13:28:13 2021 -0600
+
+    Fixed matplotlib import
+
+commit 9943da35ea1882111915fcdc77cdcfab4d76a868
+Author: Zachary Shand <zachary.shand@cybera.ca>
+Date:   Wed Aug 4 13:24:21 2021 -0600
+
+    refactored fucntion def
+
+commit d756ceba3f2cb9e40b060bdcabf872d53a4259c5
+Author: Zachary Shand <zachary.shand@cybera.ca>
+Date:   Wed Aug 4 13:20:00 2021 -0600
+
+    Removed unnecessary cells, moved imports
+commit 1bcd366928d4e3d7b337b65c946ce52ea7ef9cd6
+Author: Zachary Shand <zachary.shand@cybera.ca>
+Date:   Wed Aug 4 13:16:42 2021 -0600
+
+    renamed and moved notebook
+
+commit aee895242ca9dd97e709614d985f1a4c98914c3b
+Author: Zach <81401558+ZachAttacksProblems@users.noreply.github.com>
+Date:   Wed Aug 4 12:37:10 2021 -0600
+
+    Update README.md
+
+commit c1b408d6c4ca7924a9b71d2aaa62c91267b4a807
+Author: Zach <81401558+ZachAttacksProblems@users.noreply.github.com>
+Date:   Wed Aug 4 10:58:54 2021 -0600
+
+    Delete GetData.ipynb
+```
 
