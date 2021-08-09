@@ -70,19 +70,57 @@ if you want you could find out any fun or strange things that have
 changed over the authoring of this as well. 
 
 ## Outline
+Below are the commit hashes (labels) of all the commits we did 
+during the demo as well as their commit messages. 
 
-c1b408 Start (Delete GetData.ipynb)
-aee895 Update README.md (on main)
-1bcd36 renamed and moved notebook
-d756ce Removed unnecessary cells, moved imports
-9943da refactored fucntion def
-03ea64 Fixed matplotlib import
-78a46c Moved function def out to script
-d45abc pre PR commit
-\<this is where we branched\> _fellowship-demo exists as a branch here still_
-e0a1ed Removed not PR ready notebooks
-ee6b7a added axis labels (PR comment)
-103c89 Merge pull request #4 from cybera/fellowship-demo-PR
+### c1b408: (Start, made branch from here)
+```
+git switch main
+git branch fellowship-demo
+```
+
+### 1bcd36: renamed and moved notebook
+```
+git mv zach-Iris_notebook.ipynb ./notebooks/IrisLoadAndDisplay.ipynb
+git add ./notebooks/IrisLoadAndDisplay.ipynb
+git commit -m 'renamed and moved notebook'
+```
+
+### d756ce: Removed unnecessary cells, moved imports
+```
+git add ./notebooks/IrisLoadAndDisplay.ipynb
+git commit -m 'Removed unnecessary cells, moved imports'
+```
+
+### 9943da: refactored fucntion def
+```
+git add ./scripts/visualization/graphs.py
+git commit -m 'refactored fucntion def'
+```
+
+### 03ea64: Fixed matplotlib import
+```
+git add ./scripts/visualization/graphs.py
+git commit -m 'Fixed matplotlib import'
+```
+
+### 78a46c: Moved function def out to script
+What? this doesn't make sense chronologically. Check the logs
+again :( silly me.
+```
+
+```
+
+### d45abc: pre PR commit
+
+### Created branch for PR; 
+_fellowship-demo exists as a branch here still_
+
+### e0a1ed: Removed not PR ready notebooks
+
+### ee6b7a: added axis labels (PR comment)
+
+### 103c89: Merge pull request #4 from cybera/fellowship-demo-PR
     
     
 
