@@ -80,7 +80,9 @@ changed over the authoring of this as well.
 
 
 Below are the commit hashes (labels) of all the commits we did 
-during the demo as well as their commit messages.
+during the demo as well as their commit messages. Every commit 
+creates a new snapshot of our files and moves us onto 
+the next SHA-1 hash in the git graph. 
 
 All git 
 commands are run from github directory top level folder which
@@ -179,7 +181,7 @@ git commit -m 'pre PR commit'
 
 ----
 ### [d45abc](https://github.com/cybera/fellowship-iris-example/commit/d45abc): Created branch for PR; 
-_fellowship-demo exists as a branch here still_
+_fellowship-demo still exists as an open branch in the repo_
 
 Notice we're at the same hash 
 because we haven't commited any changes.
@@ -201,6 +203,7 @@ git push
 ```
 
 ----
+### [Pull Request](https://github.com/cybera/fellowship-iris-example/pull/4): Opened on github.com
 Before the next step we went to github.com/cybera/fellowship-iris-example/ and opened a PR on the newly made 
 fellowship-demo-PR branch. 
 
