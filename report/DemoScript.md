@@ -70,7 +70,11 @@ those and (hopefully) you could do that on your own
 and figure out what happened, but below we'll explain what
 was done, reference the SHA-1 hashes so you can see what was done 
 and how that can be useful for going back or referencing 
-any work you've done. 
+any work you've done. If you ever want to go back 
+and just look at the files you can do that on github
+or in git on a cloned repo by using `git checkout <abc134>` 
+where <abc134> would be replaced by the first few characters 
+of the git commit hash you're interested in. 
 
 Also, we'll be version controlling this document as well so 
 if you want you could find out any fun or strange things that have 
@@ -241,6 +245,51 @@ to main. Since we weren't modifying the README we didn't
 need to worry about merging that file and it was merged 
 automoatically. 
  
-    
+## Merging Jupyter Notebooks
+Jupyter is a complex environment which works 
+with a markup of python and its outputs. In other words, 
+you're interacting with an application that 
+writes the 'code' and creates syntactically valid 
+json markup that it can save, read, and execute. 
 
+Git, however, is designed primarily for version 
+controlling more traditional line-by-line
+programs and only knows how to work with lines of text. 
+If you never collaborated on a notebook with someone 
+you'd never have merge conflicts in a notebook and 
+you might not notice this fact. If you ever 
+have to merge changes from two people (say in a pull
+request) you will discover that this is difficult. 
 
+In the demo, I showed how to use a command line tool 
+called nbdyme which has git integration support 
+to make this process a bit easier. To setup the demo 
+I made two branches ahead of time where I had 
+made concurrent changes in two branches that I wanted 
+to later merge. 
+
+These notebooks have changes on the same 
+line -- one changed the figure size to (16,10) vs. (18,18) in the other -- 
+which are a merge conflict for git. Additionally, there is a conflict in the output png genereated since one notebook
+has increased the font size while the other has added 
+a title to the figure.  
+
+I called these two branches [notebookA](https://github.com/cybera/fellowship-iris-example/tree/notebookA) which is currently 
+at hash b714a and [notebookB](https://github.com/cybera/fellowship-iris-example/tree/notebookB) which is at hash 
+495de. 
+You can also look at the two notebooks here: [A](https://github.com/cybera/fellowship-iris-example/blob/notebookA/notebooks/IrisLoadAndDisplay.ipynb) and [B](https://github.com/cybera/fellowship-iris-example/blob/notebookB/notebooks/IrisLoadAndDisplay.ipynb)
+
+To install the tool and connect it to git we run the following commands at the terminal (this has to be installed in the same place you're running git from, i.e. not in the requirements.txt).
+
+```terminal
+## Install nbdime
+> pip install nbdime
+> nbdime config-git --enable
+
+> git switch notebookA
+> git merge notebookB
+## Above results in a merge conflict
+
+## After merge, opens browser
+> nbdime mergetool
+```
