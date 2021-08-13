@@ -6,54 +6,26 @@ working with Git and Jupyter notebooks.
 
 Accompanying presentation available: [Slides](https://docs.google.com/presentation/d/1WZp_V-jQM4dZru19xitD3kiP7K9UaTrdDZ9vQtWSftI/edit?usp=sharing)
 
-Project Organization
-------------
-Folder structure or organziation for this project:
-```
-├── README.md                       <- The top-level README for developers using this project.
-├── .gitignore                      <- Ignores files that shouldn't go into git (e.g. ./data/).
-│
-├── report                          <- The final report, figures, and any reference materials.
-│
-├── docker-compose.yml              <- Container instructions used when running docker-compose.
-├── docker
-│   ├── Dockerfile                  <- Dockerfile for building container.
-│   └── requirements.txt            <- Specifies additional python packages to install in container.
-│
-├── data
-│   ├── processed                   <- The final, canonical data sets for modeling.
-│   └── raw                         <- The original, immutable data dump. (make changes to copies only.)
-│
-├── models                          <- Trained and serialized models, model predictions, or model summaries.
-│
-├── notebooks                       <- Jupyter notebooks. Naming convention is a number (for ordering),
-│   │                                  the creator's initials, and a short `-` delimited description.
-│   └── 0.1-zs-basic-intro-nb.ipynb <- An example notebook.
-│
-└── scripts                   
-     ├── data                       <- Scripts to download or generate data.
-     ├── features                   <- Scripts to turn raw data into features for modeling.
-     ├── models                     <- Scripts to train models and then use trained models to make.
-     └── visualization              <- Scripts to create exploratory and results oriented visualizations.
-```
+A detailed summary of the 'script' I followed when doing 
+my code changes is made available in 
+[this markdown document](./report/DemoScript.md).
 
-
-You can regenerate similar on *nix systems using:
-     ```$tree -a -I '.git|.gitkeep|__init__.py'```
-
-<p><small>Project layout based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
 
 
 Getting Started Instructions 
 ==============================
 
-How to start: ....
+Get Data and Start Docker Container:
 
-<Fill in information for Receiving Company to be able to deploy, use, and/or reproduce results. >
+```terminal
+git clone https://github.com/cybera/fellowship-iris-example.git
+cd fellowship-iris-example
+docker-compose up --build -d
+```
 
-<Including, e.g., docker installation instructions, how to run or deploy the solution/program, and run any tests.>
+Open web browser at localhost:8200.
 
-
+Open text editor of your choice. 
 
 Docker Setup
 --------------------
@@ -76,10 +48,10 @@ docker-compose up --build -d
 
 If you have successfully built and deployed the JupyterLab image container using either of the above commands, you can access the web interface of the JupyterLab at 
 ```
-http://localhost:8888
+http://localhost:8200
 ```
 
-You might be prompted to enter the token while accessing the `http://localhost:8888`. The token can be obtained from the logs of the running JupyterLab container as follows. 
+You might be prompted to enter the token while accessing the `http://localhost:8200`. The token can be obtained from the logs of the running JupyterLab container as follows. 
 
 ```
 docker logs <container-id>
@@ -89,4 +61,42 @@ To view the list of all the containers and get the container id of the JupyterLa
 ```
 docker ps -a
 ```
+
+
+Project Organization
+------------
+Folder structure or organziation for this project:
+```
+├── README.md                       <- The top-level README for developers using this project.
+├── .gitignore                      <- Ignores files that shouldn't go into git (e.g. ./data/).
+│
+├── report                          <- The final report, figures, and any reference materials.
+│
+├── docker-compose.yml              <- Container instructions used when running docker-compose.
+├── docker
+│   ├── Dockerfile                  <- Dockerfile for building container.
+│   └── requirements.txt            <- Specifies additional python packages to install in container.
+│
+├── data
+│   ├── processed                   <- The final, canonical data sets for modeling.
+│   └── raw                         <- The original, immutable data dump. (make changes to copies only.)
+│
+├── models                          <- Trained and serialized models, model predictions, or model summaries.
+│
+├── notebooks                       <- Jupyter notebooks. Naming convention is a number (for ordering),
+│                                      the creator's initials, and a short `-` delimited description.
+│
+└── scripts                   
+     ├── data                       <- Scripts to download or generate data.
+     ├── features                   <- Scripts to turn raw data into features for modeling.
+     ├── models                     <- Scripts to train models and then use trained models to make.
+     └── visualization              <- Scripts to create exploratory and results oriented visualizations.
+```
+
+
+You can regenerate similar on *nix systems using:
+     ```$tree -a -I '.git|.gitkeep|__init__.py'```
+
+<p><small>Project layout based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+
 
