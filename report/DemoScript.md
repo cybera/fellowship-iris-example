@@ -26,7 +26,7 @@ where you can see the following branches:
 
 - a complex abandoned version of this demo, 
 - a practice of this demo (with an open PR), and
-- this branch which has been merged to 'main'.
+- this live demo branch which has been merged to 'main'.
 
 Below is an ASCII schematic of what that looks like:
 
@@ -262,34 +262,103 @@ have to merge changes from two people (say in a pull
 request) you will discover that this is difficult. 
 
 In the demo, I showed how to use a command line tool 
-called nbdyme which has git integration support 
+called nbdime which has git integration support 
 to make this process a bit easier. To setup the demo 
 I made two branches ahead of time where I had 
 made concurrent changes in two branches that I wanted 
 to later merge. 
 
 These notebooks have changes on the same 
-line -- one changed the figure size to (16,10) vs. (18,18) in the other -- 
-which are a merge conflict for git. Additionally, there is a conflict in the output png genereated since one notebook
+line -- one changed the figure size to 
+(16,10) vs. (18,18) in the other -- 
+which are a merge conflict for git. Additionally, 
+there is a conflict in the output png genereated since one notebook
 has increased the font size while the other has added 
 a title to the figure.  
 
-I called these two branches [notebookA](https://github.com/cybera/fellowship-iris-example/tree/notebookA) which is currently 
-at hash b714a and [notebookB](https://github.com/cybera/fellowship-iris-example/tree/notebookB) which is at hash 
-495de. 
-You can also look at the two notebooks here: [A](https://github.com/cybera/fellowship-iris-example/blob/notebookA/notebooks/IrisLoadAndDisplay.ipynb) and [B](https://github.com/cybera/fellowship-iris-example/blob/notebookB/notebooks/IrisLoadAndDisplay.ipynb)
+I called these two branches 
+[notebookA](https://github.com/cybera/fellowship-iris-example/tree/notebookA) 
+which is currently at hash b714a and 
+[notebookB](https://github.com/cybera/fellowship-iris-example/tree/notebookB) 
+which is at hash 495de. 
+You can also look at the two notebooks here: 
+[A](https://github.com/cybera/fellowship-iris-example/blob/notebookA/notebooks/IrisLoadAndDisplay.ipynb) and [B](https://github.com/cybera/fellowship-iris-example/blob/notebookB/notebooks/IrisLoadAndDisplay.ipynb)
 
-To install the tool and connect it to git we run the following commands at the terminal (this has to be installed in the same place you're running git from, i.e. not in the requirements.txt).
+To install the tool and connect it to git we run the following 
+commands at the terminal (this has to be installed in the same place you're running git from, i.e. not in the requirements.txt).
+
+If you were to switch to notebookB and run `git merge notebookA` you would be asking 
+for git to take the changes in notebookA branch and merge them into 
+nobetookB. This will result in a merge conflict. Git expects you to open that file,
+look at the changes indicated with `<<<<, =====, >>>>` markup 
+and fix the file in a text editor. Below is an example from 
+this merge: 
+
+```
+    "import sklearn\n",
+    "import sklearn.datasets\n",
+    "\n",
+    "import scripts.visualization.graphs as myGraphs\n",
+    "\n",
+    "import matplotlib.pyplot as plt\n",
+<<<<<<< HEAD
+    "plt.rcParams['figure.figsize'] = (18,18)"
+=======
+    "plt.rcParams['figure.figsize'] = (16,10)\n",
+    "plt.rcParams['font.size'] = 14"
+>>>>>>> notebookA
+   ]
+  },
+  {
+```
+
+If you made the mistake of taking adjusting it as follows (accepting the 
+18,18 figsize, accepting the font size line):
+
+```
+**Incorrect**
+    "import scripts.visualization.graphs as myGraphs\n",
+    "\n",
+    "import matplotlib.pyplot as plt\n",
+    "plt.rcParams['figure.figsize'] = (18,18)"
+    "plt.rcParams['font.size'] = 14"
+   ]
+  },
+  {
+```
+
+you would be missing the __\n"__ and __,__ required for the jupyter syntax and might break the notebook, 
+preventing it from opening and you'd have to revert an old version. 
+Even if you are using VS Code or other IDE to help, this may 
+still not be easy or nice (there are some VS Code extensions 
+that make this easier as well and 
+seem to do something similar to nbdime as well).
+
+Additionally, there is a merge conflict on the png output.
+This might be easier to merge as it's an either/or selection, but it 
+certainly is messier since you're dealing with binary data. 
+
+If you had run the merge command 
+and you don't want to continue 
+we can undo our 'failed' merge 
+with `git merge --abort` 
+and try the following:
 
 ```terminal
 ## Install nbdime
 > pip install nbdime
 > nbdime config-git --enable
 
-> git switch notebookA
-> git merge notebookB
+> git switch notebookB
+> git merge notebookA
 ## Above results in a merge conflict
 
 ## After merge, opens browser
 > nbdime mergetool
 ```
+
+and resolve all the conflicts visually in a browswer window. 
+The nbdime program also does a couple other 
+nice things for you, like ignoring cell execution numberings, 
+and other metadata that you probably weren't interested 
+in version controlling anyway.  
