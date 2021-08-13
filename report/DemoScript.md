@@ -1,16 +1,20 @@
 # Demo Script
 
-## Document Intro
+## Intro
 
 The following is going to outline the changes made to 
-the starting notebook to convert it from a single notebook 
-which had a poor naming convention and function definition 
-which was eventually refactored into a separate script. 
+the starting notebook to convert it from a 
+[single monolithic notebook](https://github.com/cybera/fellowship-iris-example/blob/c1b408d6c4ca7924a9b71d2aaa62c91267b4a807/zach-Iris_notebook.ipynb)
+which had a poor naming convention and innapropriate function definitions inside it.
+It was eventually refactored into an
+[improved notebook](https://github.com/cybera/fellowship-iris-example/blob/103c89e50ea3331c6602bfc7ebc1412e5ddab415/notebooks/IrisLoadAndDisplay.ipynb) 
+and separate 
+[python module](https://github.com/cybera/fellowship-iris-example/blob/103c89e50ea3331c6602bfc7ebc1412e5ddab415/scripts/visualization/graphs.py). 
 
 Additionally, some information on merging/comparing simultaneous
 changes to a single notebook was demo'ed based on a branch
-from a practice demo of the refactor changes. Some information on
-that will also be presented. 
+from a practice demo of the refactor changes. This is explained 
+at the end of this document. 
 
 ## Let's Get Started
 
@@ -82,11 +86,16 @@ changed over the authoring of this as well.
 
 ## Actions
 
-
 Below are the commit hashes (labels) of all the commits we did 
 during the demo as well as their commit messages. Every commit 
 creates a new snapshot of our files and moves us onto 
-the next SHA-1 hash in the git graph. 
+the next SHA-1 hash in the git graph. As a summary the 
+following actions were taken:
+
+    -rename and move notebook
+    -cleanup notebook
+    -move function definition out of notebook to a .py file
+    -make notebook save its result (a graph)
 
 All git 
 commands are run from github directory top level folder which
@@ -295,6 +304,8 @@ and fix the file in a text editor. Below is an example from
 this merge: 
 
 ```
+** Sample merge conflict **
+
     "import sklearn\n",
     "import sklearn.datasets\n",
     "\n",
@@ -316,7 +327,8 @@ If you made the mistake of taking adjusting it as follows (accepting the
 18,18 figsize, accepting the font size line):
 
 ```
-**Incorrect**
+** Incorrect Merge **
+
     "import scripts.visualization.graphs as myGraphs\n",
     "\n",
     "import matplotlib.pyplot as plt\n",
