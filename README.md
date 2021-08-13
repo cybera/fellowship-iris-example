@@ -8,14 +8,12 @@ Accompanying presentation available: [Slides](https://docs.google.com/presentati
 
 A detailed summary of the 'script' I followed when doing 
 my code changes is made available in 
-[this markdown document](report/DemoScript).
+[this markdown document](./report/DemoScript.md).
 
 
 
 Getting Started Instructions 
 ==============================
-
-How to start: 
 
 Get Data and Start Docker Container:
 
