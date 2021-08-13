@@ -1,11 +1,11 @@
-# Demo Script
+# Script for Demonstration
 
 ## Intro
 
 The following is going to outline the changes made to 
 the starting notebook to convert it from a 
 [single monolithic notebook](https://github.com/cybera/fellowship-iris-example/blob/c1b408d6c4ca7924a9b71d2aaa62c91267b4a807/zach-Iris_notebook.ipynb)
-which had a poor naming convention and innapropriate function definitions inside it.
+which had a poor naming convention and innapropriate function definition inside it.
 It was eventually refactored into an
 [improved notebook](https://github.com/cybera/fellowship-iris-example/blob/103c89e50ea3331c6602bfc7ebc1412e5ddab415/notebooks/IrisLoadAndDisplay.ipynb) 
 and separate 
@@ -13,7 +13,7 @@ and separate
 
 Additionally, some information on merging/comparing simultaneous
 changes to a single notebook was demo'ed based on a branch
-from a practice demo of the refactor changes. This is explained 
+from a practice demo. This is explained 
 at the end of this document. 
 
 ## Let's Get Started
@@ -29,8 +29,9 @@ you can take a look at the
 where you can see the following branches: 
 
 - a complex abandoned version of this demo, 
-- a practice of this demo (with an open PR), and
-- this live demo branch which has been merged to 'main'.
+- a practice of this demo (with an open PR), 
+- the live demo branch which has been merged to 'main', and
+- a (new) branch for this script.
 
 Below is an ASCII schematic of what that looks like:
 
@@ -71,11 +72,12 @@ You can also access this in other 3rd party tools (e.g. if you aren't using gith
 If you look at the above link or clone the repo and run git log 
 there's also the commit SHA-1 hashes (long sequence of numbers and letters). We're going to reference 
 those and (hopefully) you could do that on your own 
-and figure out what happened, but below we'll explain what
-was done, reference the SHA-1 hashes so you can see what was done 
-and how that can be useful for going back or referencing 
-any work you've done. If you ever want to go back 
-and just look at the files you can do that on github
+and figure out what happened. Below we'll: explain what
+was done while referencing the SHA-1 hashes or detailed 
+file history. This can be useful for going back or referencing 
+any work you've done. If you ever do want to go back 
+and just look at the files in a git repository 
+you can do that on github
 or in git on a cloned repo by using `git checkout <abc134>` 
 where <abc134> would be replaced by the first few characters 
 of the git commit hash you're interested in. 
@@ -89,18 +91,18 @@ changed over the authoring of this as well.
 Below are the commit hashes (labels) of all the commits we did 
 during the demo as well as their commit messages. Every commit 
 creates a new snapshot of our files and moves us onto 
-the next SHA-1 hash in the git graph. As a summary the 
-following actions were taken:
+the next SHA-1 hash in the git graph. As an overall 
+summary of the entire start to finish 
+refactoring the following actions were taken:
 
     -rename and move notebook
     -cleanup notebook
     -move function definition out of notebook to a .py file
-    -make notebook save its result (a graph)
+    -make notebook save its result (a graph).
 
 All git 
 commands are run from github directory top level folder which
-was ~/DS/fellowship-iris-example on my 
-MAC (which corresponds equivalently /home/jovyan/ in the docker container).
+was _~/DS/fellowship-iris-example_ on my MAC.
 
 
 ----
@@ -255,6 +257,9 @@ need to worry about merging that file and it was merged
 automoatically. 
  
 ## Merging Jupyter Notebooks
+
+### Background
+
 Jupyter is a complex environment which works 
 with a markup of python and its outputs. In other words, 
 you're interacting with an application that 
@@ -264,11 +269,13 @@ json markup that it can save, read, and execute.
 Git, however, is designed primarily for version 
 controlling more traditional line-by-line
 programs and only knows how to work with lines of text. 
-If you never collaborated on a notebook with someone 
+If you never collaborate on a notebook with someone 
 you'd never have merge conflicts in a notebook and 
 you might not notice this fact. If you ever 
-have to merge changes from two people (say in a pull
+*have* to merge changes from two people (say in a pull
 request) you will discover that this is difficult. 
+
+### Demo Example
 
 In the demo, I showed how to use a command line tool 
 called nbdime which has git integration support 
@@ -289,19 +296,20 @@ I called these two branches
 [notebookA](https://github.com/cybera/fellowship-iris-example/tree/notebookA) 
 which is currently at hash b714a and 
 [notebookB](https://github.com/cybera/fellowship-iris-example/tree/notebookB) 
-which is at hash 495de. 
+which is at hash 495de. They have a common ancestor branch
+at [861f3](https://github.com/cybera/fellowship-iris-example/commit/861f36eae3c5540f0422b7bf0db2224ad63308e9).
 You can also look at the two notebooks here: 
-[A](https://github.com/cybera/fellowship-iris-example/blob/notebookA/notebooks/IrisLoadAndDisplay.ipynb) and [B](https://github.com/cybera/fellowship-iris-example/blob/notebookB/notebooks/IrisLoadAndDisplay.ipynb)
+[A](https://github.com/cybera/fellowship-iris-example/blob/notebookA/notebooks/IrisLoadAndDisplay.ipynb) and [B](https://github.com/cybera/fellowship-iris-example/blob/notebookB/notebooks/IrisLoadAndDisplay.ipynb) and compare how they are different from each other and their ancestor or [parent notebook](https://github.com/cybera/fellowship-iris-example/blob/861f36eae3c5540f0422b7bf0db2224ad63308e9/notebooks/IrisLoadAndDisplay.ipynb).
 
-To install the tool and connect it to git we run the following 
-commands at the terminal (this has to be installed in the same place you're running git from, i.e. not in the requirements.txt).
-
+Before using the 'good' tool, we should see why we would 
+even bother with this extra effort.
 If you were to switch to notebookB and run `git merge notebookA` you would be asking 
-for git to take the changes in notebookA branch and merge them into 
+for git to take the changes in the notebookA branch and merge them into 
 nobetookB. This will result in a merge conflict. Git expects you to open that file,
-look at the changes indicated with `<<<<, =====, >>>>` markup 
-and fix the file in a text editor. Below is an example from 
-this merge: 
+look at the changes, indicated with `<<<<HEAD, ======, >>>>notebookA`,  
+and fix the file in a text editor. 
+
+Below is an example from this merge: 
 
 ```
 ** Sample merge conflict **
@@ -323,8 +331,7 @@ this merge:
   {
 ```
 
-If you made the mistake of taking adjusting it as follows (accepting the 
-18,18 figsize, accepting the font size line):
+If you wanted to accept changes from both - 18,18 figure size and 14 font size - you might make the mistake of taking adjusting it as follows:
 
 ```
 ** Incorrect Merge **
@@ -339,18 +346,20 @@ If you made the mistake of taking adjusting it as follows (accepting the
   {
 ```
 
-you would be missing the __\n"__ and __,__ required for the jupyter syntax and might break the notebook, 
+you would be missing the "__\n__" and "__,__" required for the jupyter syntax and might break the notebook, 
 preventing it from opening and you'd have to revert an old version. 
 Even if you are using VS Code or other IDE to help, this may 
 still not be easy or nice (there are some VS Code extensions 
 that make this easier as well and 
 seem to do something similar to nbdime as well).
 
-Additionally, there is a merge conflict on the png output.
-This might be easier to merge as it's an either/or selection, but it 
-certainly is messier since you're dealing with binary data. 
+Additionally, there is a merge conflict (not showed) 
+on the png output.
+This might be easier to merge as it's an either/or selection, 
+but it 
+certainly is less human friendly since you're dealing with binary data. 
 
-If you had run the merge command 
+If you ran the above merge command 
 and you don't want to continue 
 we can undo our 'failed' merge 
 with `git merge --abort` 
@@ -361,11 +370,13 @@ and try the following:
 > pip install nbdime
 > nbdime config-git --enable
 
+## Ensure we're on the correct branch
 > git switch notebookB
-> git merge notebookA
-## Above results in a merge conflict
 
-## After merge, opens browser
+## Results in a merge conflict
+> git merge notebookA
+
+## Opens a web browser
 > nbdime mergetool
 ```
 
