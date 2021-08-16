@@ -331,7 +331,8 @@ Below is an example from this merge:
   {
 ```
 
-If you wanted to accept changes from both - 18,18 figure size and 14 font size - you might make the mistake of taking adjusting it as follows:
+If you wanted to accept changes from both - say, e.g., setting the figure size to 18,18 and the font size to 14 - 
+you might make the mistake of taking adjusting it as follows:
 
 ```
 ** Incorrect Merge **
@@ -353,7 +354,7 @@ still not be easy or nice (there are some VS Code extensions
 that make this easier as well and 
 seem to do something similar to nbdime as well).
 
-Additionally, there is a merge conflict (not showed) 
+Additionally, there is a merge conflict (not shown) 
 on the png output.
 This might be easier to merge as it's an either/or selection, 
 but it 
